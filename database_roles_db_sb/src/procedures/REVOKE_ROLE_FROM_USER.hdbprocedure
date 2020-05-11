@@ -1,0 +1,48 @@
+PROCEDURE "REVOKE_ROLE_FROM_USER" (IN role_name NVARCHAR(256),
+	IN grantee NVARCHAR(256))
+	
+LANGUAGE SQLSCRIPT 
+SQL SECURITY DEFINER 
+--DEFAULT SCHEMA <default_schema_name>
+AS
+-- SQL statement we're going to execute
+v_statement    NVARCHAR(1024);
+hdi_oo         NVARCHAR (256);
+role_schema    NVARCHAR (256);
+counter INTEGER := 0;
+error_code INTEGER;
+error_message  NVARCHAR(1024);
+
+BEGIN
+-- prepare error handling in case of invalid arguments
+
+DECLARE USERNOTEXIST CONDITION FOR SQL_ERROR_CODE 11001;
+DECLARE GRANTSELF CONDITION FOR SQL_ERROR_CODE 11002;
+DECLARE ROLENOTEXIST CONDITION FOR SQL_ERROR_CODE 11003;
+DECLARE EXIT HANDLER FOR USERNOTEXIST RESIGNAL;
+DECLARE EXIT HANDLER FOR GRANTSELF RESIGNAL;
+DECLARE EXIT HANDLER FOR ROLENOTEXIST RESIGNAL;
+hdi_oo := ::CURRENT_OBJECT_SCHEMA || '#OO';role_schema := ::CURRENT_OBJECT_SCHEMA;
+
+-- check input parameter user:
+-- does grantee exist?
+SELECT COUNT (*) INTO counter FROM (SELECT * FROM "users" WHERE user_name= :grantee);
+IF ( counter != 1 )   THEN SIGNAL USERNOTEXIST SET MESSAGE_TEXT = 'User does not exist: ' || :grantee;
+END IF;
+
+-- check if role exists
+SELECT COUNT (*) INTO counter FROM (SELECT * FROM "roles" WHERE role_name= :role_name AND role_schema_name = :role_schema AND creator = :hdi_oo);
+IF ( counter != 1 )   THEN SIGNAL ROLENOTEXIST SET MESSAGE_TEXT = 'Role does not exist: ' || :role_name;
+END IF;
+
+-- self revoke?
+IF :grantee = SESSION_USER THEN SIGNAL GRANTSELF SET MESSAGE_TEXT = 'Self-revoke not allowed';
+END IF;
+
+-- assemble revoke statement:
+v_statement := 'REVOKE "' || ESCAPE_DOUBLE_QUOTES(:role_schema) || '"."' ||ESCAPE_DOUBLE_QUOTES(:role_name) || '" FROM "' || ESCAPE_DOUBLE_QUOTES(:grantee) || '"';
+
+-- and run the statement:
+EXEC v_statement;
+
+END

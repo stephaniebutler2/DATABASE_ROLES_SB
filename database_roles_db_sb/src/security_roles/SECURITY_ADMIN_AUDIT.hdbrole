@@ -1,0 +1,6 @@
+{
+	"role": {
+		"name": "SECURITY_ADMIN_AUDIT",
+		"system_privileges": ["CATALOG READ", "AUDIT ADMIN"]
+	}
+}

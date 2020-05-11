@@ -1,0 +1,6 @@
+{
+	"role": {
+		"name": "USER_ADMIN",
+		"system_privileges": ["USER ADMIN"]
+	}
+}

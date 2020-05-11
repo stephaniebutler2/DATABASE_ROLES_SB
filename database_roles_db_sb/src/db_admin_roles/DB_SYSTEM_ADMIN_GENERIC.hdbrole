@@ -1,0 +1,8 @@
+{
+	"role": {
+		"name": "DB_SYSTEM_ADMIN_GENERIC",
+		"schema_roles": [{
+			"names": ["DB_BACKUP_ADMIN", "DB_BASIC_ADMIN", "DB_PERSISTENCE_ADMIN"]
+		}]
+	}
+}

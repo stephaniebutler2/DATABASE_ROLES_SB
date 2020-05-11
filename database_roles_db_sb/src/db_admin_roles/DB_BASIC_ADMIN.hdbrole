@@ -1,0 +1,9 @@
+{
+	"role": {
+		"name": "DB_BASIC_ADMIN",
+		"schema_roles": [{
+			"names": ["SELECT__SYS_STATISTICS"]
+		}],
+		"system_privileges": ["CATALOG READ", "SERVICE ADMIN", "INIFILE ADMIN", "TRACE ADMIN", "SESSION ADMIN", "VERSION ADMIN", "LICENSE ADMIN"]
+	}
+}

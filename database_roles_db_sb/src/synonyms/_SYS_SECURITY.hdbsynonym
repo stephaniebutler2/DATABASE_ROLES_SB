@@ -1,0 +1,8 @@
+{
+  "password_blacklist": {
+    "target": {
+      "object": "_SYS_PASSWORD_BLACKLIST",
+      "schema": "_SYS_SECURITY"
+    }
+  }
+}

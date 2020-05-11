@@ -1,0 +1,23 @@
+{
+	"PRIVILEGE_SERVICE": {
+		"object_owner": {
+			"schema_privileges": [{
+				"schema": "_SYS_STATISTICS",
+				"privileges_with_grant_option": ["SELECT"]
+			}],
+			"roles": [{}],
+			"object_privileges": [{
+				"schema": "_SYS_SECURITY",
+				"name": "_SYS_PASSWORD_BLACKLIST",
+				"type": "TABLE",
+				"privileges_with_grant_option": ["SELECT", "INSERT", "UPDATE", "DELETE"]
+			}, {}],
+			"system_privileges": [{
+				"privileges_with_admin_option": ["CATALOG READ", "SERVICE ADMIN", "INIFILE ADMIN", "TRACE ADMIN", "SESSION ADMIN", "VERSION ADMIN",
+					"LICENSE ADMIN", "SAVEPOINT ADMIN", "RESOURCE ADMIN", "BACKUP OPERATOR", "BACKUP ADMIN", "CREATE SCHEMA", "EXPORT", "IMPORT",
+					"AUDIT ADMIN", "AUDIT OPERATOR", "USER ADMIN", "ENCRYPTION ROOT KEY ADMIN", "SSL ADMIN", "TRUST ADMIN", "CERTIFICATE ADMIN",
+					"LOG ADMIN"]
+			}]
+		}
+	}
+}

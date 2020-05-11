@@ -1,0 +1,8 @@
+{
+	"role": {
+		"name": "SECURITY_ADMIN_EXTENDED",
+		"schema_roles": [{
+			"names": ["SECURITY_ADMIN", "SECURITY_ADMIN_AUDIT"]
+		}]
+	}
+}

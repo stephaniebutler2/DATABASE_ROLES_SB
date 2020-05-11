@@ -1,0 +1,6 @@
+{
+	"role": {
+		"name": "DB_BACKUP_ADMIN",
+		"system_privileges": ["CATALOG READ", "BACKUP ADMIN"]
+	}
+}

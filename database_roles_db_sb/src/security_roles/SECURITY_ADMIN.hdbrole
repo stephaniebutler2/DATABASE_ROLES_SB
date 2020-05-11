@@ -1,0 +1,8 @@
+{
+	"role": {
+		"name": "SECURITY_ADMIN",
+		"schema_roles": [{
+			"names": ["SECURITY_ADMIN_BASIC", "SECURITY_ADMIN_TROUBLESHOOTING"]
+		}]
+	}
+}

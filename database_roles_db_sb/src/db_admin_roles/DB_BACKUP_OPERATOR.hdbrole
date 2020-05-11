@@ -1,0 +1,6 @@
+{
+	"role": {
+		"name": "DB_BACKUP_OPERATOR",
+		"system_privileges": ["BACKUP OPERATOR"]
+	}
+}

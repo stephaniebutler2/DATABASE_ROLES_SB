@@ -1,0 +1,6 @@
+{
+	"role": {
+		"name": "SECURITY_ADMIN_TROUBLESHOOTING",
+		"system_privileges": ["CATALOG READ", "TRACE ADMIN"]
+	}
+}

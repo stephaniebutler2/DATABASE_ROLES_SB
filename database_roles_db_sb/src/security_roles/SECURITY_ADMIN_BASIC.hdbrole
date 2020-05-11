@@ -1,0 +1,11 @@
+{
+	"role": {
+		"name": "SECURITY_ADMIN_BASIC",
+		"system_privileges": ["CATALOG READ", "INIFILE ADMIN"],
+		"object_privileges": [{
+			"name": "password_blacklist",
+			"type": "TABLE",
+			"privileges": ["SELECT", "INSERT", "UPDATE", "DELETE"]
+		}]
+	}
+}

@@ -1,0 +1,6 @@
+{
+	"role": {
+		"name": "AUDIT_OPERATOR",
+		"system_privileges": ["AUDIT OPERATOR"]
+	}
+}

@@ -1,0 +1,6 @@
+{
+	"role": {
+		"name": "SECURITY_ADMIN_DISK_ENCRYPTION",
+		"system_privileges": ["CATALOG READ", "RESOURCE ADMIN", "ENCRYPTION ROOT KEY ADMIN"]
+	}
+}

@@ -1,0 +1,40 @@
+ID: DATABASE_ROLES_SB
+_schema-version: '2.1'
+version: 0.0.1
+
+modules:
+ - name: database_roles_db_sb
+   type: hdb
+   path: database_roles_db_sb
+   requires:
+    - name: hdi_database_roles_db_sb
+      properties:
+        TARGET_CONTAINER: ~{hdi-container-name}
+
+
+
+    - name: cross-container-service-1
+      group: SERVICE_REPLACEMENTS
+
+      properties:
+        key: ServiceName_1
+        service: ~{the-service-name}
+                          
+
+
+resources:
+ - name: hdi_database_roles_db_sb
+   parameters:
+      config:
+         schema: database_roles_db_sb
+   properties:
+      hdi-container-name: ${service-name}
+   type: com.sap.xs.hdi-container
+
+ - name: cross-container-service-1
+   parameters:
+      service-name: PRIVILEGE_SERVICE
+   properties:
+      the-service-name: ${service-name}
+   type: org.cloudfoundry.existing-service
+
